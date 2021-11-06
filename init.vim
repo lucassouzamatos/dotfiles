@@ -33,9 +33,6 @@ call plug#begin('~/.nvim/plugged')
 call plug#end()
 
 " configuration about tab bars
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.icon_custom_colors = v:false
-
 nnoremap <silent>    <A-.> :BufferPrevious<CR>
 nnoremap <silent>    <A-,> :BufferNext<CR>
 
