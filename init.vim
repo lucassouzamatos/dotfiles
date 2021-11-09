@@ -30,6 +30,11 @@ call plug#begin('~/.nvim/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'romgrk/barbar.nvim'
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'branch': 'release/0.x'
+    \ }
 call plug#end()
 
 " configuration about tab bars
@@ -97,3 +102,5 @@ nnoremap <C-l> <C-w>l
 :inoremap kj <Esc>
 :vnoremap jk <Esc>
 :vnoremap kj <Esc>
+
+
