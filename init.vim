@@ -27,6 +27,7 @@ call plug#begin('~/.nvim/plugged')
   Plug 'honza/vim-snippets'
   Plug 'scrooloose/nerdtree'
   Plug 'preservim/nerdcommenter'
+  Plug 'w0rp/ale'
   Plug 'mhinz/vim-startify'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'romgrk/barbar.nvim'
@@ -56,11 +57,11 @@ nnoremap <silent>    <A-9> :BufferLast<CR>
 nnoremap <silent>    <A-c> :BufferClose<CR>
 
 " color schemes
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+if (has("termguicolors"))
+  set termguicolors
+endif
 
-  syntax enable
+syntax enable
 
 colorscheme dracula
 
@@ -103,4 +104,4 @@ nnoremap <C-l> <C-w>l
 :vnoremap jk <Esc>
 :vnoremap kj <Esc>
 
-
+" let g:prettier#autoformat = 1
