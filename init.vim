@@ -28,10 +28,15 @@ call plug#begin('~/.nvim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'preservim/nerdcommenter'
   Plug 'w0rp/ale'
+  Plug 'folke/tokyonight.nvim'
   Plug 'mhinz/vim-startify'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'romgrk/barbar.nvim'
+  Plug 'projekt0n/github-nvim-theme'
+  Plug 'wojciechkepka/vim-github-dark'
+  Plug 'tpope/vim-commentary'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'prettier/vim-prettier', {
     \ 'do': 'yarn install',
     \ 'branch': 'release/0.x'
@@ -63,7 +68,13 @@ endif
 
 syntax enable
 
-colorscheme dracula
+let g:tokyonight_style = "night"
+
+colorscheme tokyonight
+" colorscheme github_light_default
+" colorscheme github_dark
+" colorscheme ghdark
+" colorscheme dracula
 
 set encoding=UTF-8
 
@@ -104,4 +115,28 @@ nnoremap <C-l> <C-w>l
 :vnoremap jk <Esc>
 :vnoremap kj <Esc>
 
-" let g:prettier#autoformat = 1
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-actions',
+  \ 'coc-lists',
+  \ 'coc-tsserver',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-prettier',
+  \ 'coc-vimlsp',
+  \ ]
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <silent> gf <Plug>(coc-definition)
