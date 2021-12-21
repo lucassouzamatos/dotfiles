@@ -21,6 +21,8 @@ set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 
 call plug#begin('~/.nvim/plugged')
+  Plug 'liuchengxu/vista.vim'
+  Plug 'yunlingz/equinusocio-material.vim'
   Plug 'dracula/vim'
   Plug 'ryanoasis/vim-devicons'
   Plug 'SirVer/ultisnips'
@@ -28,6 +30,7 @@ call plug#begin('~/.nvim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'preservim/nerdcommenter'
   Plug 'w0rp/ale'
+  Plug 'vim-airline/vim-airline'
   Plug 'folke/tokyonight.nvim'
   Plug 'mhinz/vim-startify'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -37,6 +40,8 @@ call plug#begin('~/.nvim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'sickill/vim-monokai'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'prettier/vim-prettier', {
     \ 'do': 'yarn install',
     \ 'branch': 'release/0.x'
@@ -69,13 +74,15 @@ endif
 syntax enable
 
 let g:tokyonight_style = "night"
-
-colorscheme tokyonight
+let g:equinusocio_material_style = 'pure'
+" colorscheme monokai
+" colorscheme tokyonight
 " colorscheme github_light_default
 " colorscheme github_dark
 " colorscheme ghdark
-" colorscheme dracula
-
+colorscheme dracula
+" colorscheme equinusocio_material
+" let g:equinusocio_material_style = 'pure'
 set encoding=UTF-8
 
 " NERDTree configurations
@@ -140,3 +147,15 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 
 nmap <silent> gf <Plug>(coc-definition)
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
