@@ -21,6 +21,8 @@ set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 
 call plug#begin('~/.nvim/plugged')
+	Plug 'elvessousa/sobrio'
+  Plug 'vim-erlang/vim-erlang-runtime'
   Plug 'liuchengxu/vista.vim'
   Plug 'yunlingz/equinusocio-material.vim'
   Plug 'dracula/vim'
@@ -75,12 +77,13 @@ syntax enable
 
 let g:tokyonight_style = "night"
 let g:equinusocio_material_style = 'pure'
+colorscheme sobrio
 " colorscheme monokai
 " colorscheme tokyonight
 " colorscheme github_light_default
 " colorscheme github_dark
 " colorscheme ghdark
-colorscheme dracula
+" colorscheme dracula
 " colorscheme equinusocio_material
 " let g:equinusocio_material_style = 'pure'
 set encoding=UTF-8
