@@ -21,6 +21,9 @@ set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 
 call plug#begin('~/.nvim/plugged')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 	Plug 'elvessousa/sobrio'
   Plug 'vim-erlang/vim-erlang-runtime'
   Plug 'liuchengxu/vista.vim'
@@ -30,6 +33,7 @@ call plug#begin('~/.nvim/plugged')
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'scrooloose/nerdtree'
+  Plug 'mracos/mermaid.vim'
   Plug 'preservim/nerdcommenter'
   Plug 'w0rp/ale'
   Plug 'vim-airline/vim-airline'
@@ -37,6 +41,7 @@ call plug#begin('~/.nvim/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'romgrk/barbar.nvim'
+  Plug 'ellisonleao/glow.nvim'
   Plug 'projekt0n/github-nvim-theme'
   Plug 'wojciechkepka/vim-github-dark'
   Plug 'tpope/vim-commentary'
@@ -68,6 +73,11 @@ nnoremap <silent>    <A-9> :BufferLast<CR>
 " Close buffer
 nnoremap <silent>    <A-c> :BufferClose<CR>
 
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 " color schemes
 if (has("termguicolors"))
   set termguicolors
@@ -75,19 +85,18 @@ endif
 
 syntax enable
 
-let g:tokyonight_style = "night"
-let g:equinusocio_material_style = 'pure'
-colorscheme sobrio
+" colorscheme equinusocio_material
+" colorscheme sobrio
+" colorscheme material
 " colorscheme monokai
 " colorscheme tokyonight
 " colorscheme github_light_default
-" colorscheme github_dark
+colorscheme github_dark
 " colorscheme ghdark
 " colorscheme dracula
-" colorscheme equinusocio_material
 " let g:equinusocio_material_style = 'pure'
 set encoding=UTF-8
-
+let g:equinusocio_material_style = 'darker'
 " NERDTree configurations
 
 autocmd VimEnter * NERDTree 
